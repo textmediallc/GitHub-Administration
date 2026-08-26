@@ -9,8 +9,8 @@
    * Click `Add file`, then `Create new file`, and name it `config/blocked-test.env`.
    * Add both of the following lines (as with Lab 5, AWS credentials are only detected as a matched pair — a lone secret key won't trigger push protection):
      ```
-     AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-     AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLX
+    AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEX
      ```
    * This is the same widely published AWS example pair used in Lab 5, safe for this exercise.
 4. **Attempt to Commit:** Try to commit this file directly to `main`.
