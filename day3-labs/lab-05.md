@@ -7,14 +7,19 @@
 2. **Enable Secret Scanning:** Click `Settings`, then `Code security`, and click `Enable` next to `Secret scanning`.
 3. **Create a Test File with a Recognizable Pattern:**
    * Click `Add file`, then `Create new file`, and name it `config/sample.env`.
-   * Add the line `AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE` (a widely used, publicly documented example AWS key format, safe for training purposes).
+   * Add both of the following lines (GitHub's AWS detection requires the access key ID and secret access key to appear together in the same file as a matched pair — a single key alone won't trigger an alert):
+     ```
+     AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+     AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+     ```
+   * This exact pair is AWS's own long-published documentation example, safe for training purposes.
 4. **Commit the File:** Commit directly to `main`.
 5. **Wait for the Scan:** Give GitHub a few moments to scan the new commit, then navigate to `Security`, then `Secret scanning alerts`.
 6. **Open the Alert:** Click into the alert generated for your test credential.
 7. **Review the Alert Detail:** Note which file and line the secret was found in, and which partner pattern (AWS) it matched.
 8. **Check the Validity Status:** Look for an indicator of whether GitHub was able to validate the key as currently active (this specific example key is a widely published placeholder, so it should show as not active).
 9. **Remove the Test Secret:**
-   * Edit `config/sample.env`, delete the line containing the fake key, and commit the change.
+   * Edit `config/sample.env`, delete both lines containing the fake key pair, and commit the change.
 10. **Confirm the Alert State Updates:** Return to `Security > Secret scanning alerts` and confirm the alert reflects that the secret is no longer present in the current file, though it remains in history.
 11. **Verify:** Confirm you can explain why a secret scanning alert doesn't disappear just because the current file was edited, and why removing it from history would require a more disruptive operation.
 
